@@ -4,6 +4,8 @@ import annotations.LongColumn;
 import annotations.Table;
 import annotations.VarcharColumn;
 
+//teste commit
+
 @Table(name = "Pessoa", primeryKeyParameterName = "id")
 public class Pessoa {
 	
