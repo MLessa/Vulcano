@@ -1,16 +1,33 @@
 package model;
 
 import java.util.Date;
+//import annotations.LongColumn;
+//import annotations.Table;
+//import annotations.VarcharColumn;
 
+//@Table(name = "Pessoa", primeryKeyParameterName = "id")
 public class Pessoa {
-	private long id;
 	
+	//@LongColumn(name = "id")
+	private Long id;
+	
+	//@VarcharColumn(name = "nome", size = 250)
 	private String nome;
 	
 	private int qtdFilhos;
 	
 	private Date dataNascimento;
 
+	private boolean genero;
+
+	public boolean getGenero() {
+		return this.genero;
+	}
+
+	public void setGenero(boolean genero) {
+		this.genero = genero;
+	}
+	
 	public long getId() {
 		return id;
 	}
