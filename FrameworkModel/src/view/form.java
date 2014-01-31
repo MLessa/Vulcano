@@ -5,6 +5,8 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.text.DefaultFormatterFactory;
+import javax.swing.text.MaskFormatter;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.TextArea;
@@ -16,23 +18,25 @@ import java.awt.GridLayout;
 import javax.swing.JRadioButton;
 import javax.swing.JCheckBox;
 import java.awt.TextField;
+import java.text.ParseException;
+
+import javax.swing.JFormattedTextField;
 
 public class form extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField nome;
-	private JTextField form;
 	private JTextField idade;
 	private JLabel campoNome;
 	private JLabel campoIdade;
-	private JLabel campoform;
+	private JLabel campoData;
 	private JLabel campoGenero;
 	private JLabel campoObservacao;
 	private final Button salvar = new Button("Salvar");
 	private final Button limpar = new Button("Limpar");
 	private JCheckBox checkbox;
 	private TextField observacao;
-	
+	private JFormattedTextField data;
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -64,13 +68,18 @@ public class form extends JFrame {
 		contentPane.add(nome);
 		nome.setColumns(10);
 		
-		campoform = new JLabel("form:");
-		contentPane.add(campoform);
+		campoData = new JLabel("Data:");
+		contentPane.add(campoData);
 		
-		form = new JTextField();
-		contentPane.add(form);
-		form.setColumns(10);
-		
+		data = new JFormattedTextField();
+		contentPane.add(data);
+		try {  
+		    data.setFormatterFactory(new DefaultFormatterFactory(  
+		        new MaskFormatter("##-##-####")));  
+		} catch (ParseException e) {  
+		    e.printStackTrace();  
+		}  
+		 
 		campoIdade = new JLabel("Idade:");
 		contentPane.add(campoIdade);
 		
@@ -107,7 +116,7 @@ public class form extends JFrame {
 		
 		private void clear(){
 		nome.setText("");
-		form.setText("");
+		d.setText("");
 		idade.setText("");
 		observacao.setText("");
 		checkbox.setSelected(false);
