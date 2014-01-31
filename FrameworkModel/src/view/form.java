@@ -54,6 +54,8 @@ public class form extends JFrame {
 	 * Create the frame.
 	 */
 	public form() {
+		//
+		setTitle("Cadastro Pessoa");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -116,7 +118,7 @@ public class form extends JFrame {
 		
 		private void clear(){
 		nome.setText("");
-		data.setText("");
+		d.setText("");
 		idade.setText("");
 		observacao.setText("");
 		checkbox.setSelected(false);
