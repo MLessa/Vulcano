@@ -116,7 +116,7 @@ public class form extends JFrame {
 		
 		private void clear(){
 		nome.setText("");
-		d.setText("");
+		data.setText("");
 		idade.setText("");
 		observacao.setText("");
 		checkbox.setSelected(false);
