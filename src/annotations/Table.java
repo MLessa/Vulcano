@@ -9,6 +9,6 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Table {
 	String name();
-	String primeryKeyParameterName();
+	String primeryKeyParameterName() default "id";
 	boolean isPrimaryKeyAutoIncrement() default true;
 }

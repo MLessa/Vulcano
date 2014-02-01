@@ -7,10 +7,9 @@ import annotations.DateColumn;
 import annotations.IntColumn;
 import annotations.LongColumn;
 import annotations.Table;
-import annotations.TypeColumn;
 import annotations.VarcharColumn;
 
-public class AnnotationGetter{
+public class AnnotationGetter {
 	
 	public static ArrayList<VarcharColumn> getVarcharColumnAnnotations(Class<?> T){
 		ArrayList<VarcharColumn> annotations = new ArrayList<VarcharColumn>();
@@ -51,17 +50,7 @@ public class AnnotationGetter{
 		}
 		return annotations;
 	}
-	
-	public static ArrayList<TypeColumn> getTypeColumnAnnotations(Class<?> T){
-		ArrayList<TypeColumn> annotations = new ArrayList<TypeColumn>();
-		for (Field field : T.getDeclaredFields()) {
-			if(field.isAnnotationPresent(TypeColumn.class)){
-				annotations.add(field.getAnnotation(TypeColumn.class));
-			}
-		}
-		return annotations;
-	}
-	
+		
 	public static Table getTableAnnotation(Class<?> T){
 		return T.getAnnotation(Table.class);
 	}

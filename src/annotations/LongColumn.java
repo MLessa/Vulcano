@@ -1,5 +1,5 @@
 package annotations;
-// teste
+
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -11,5 +11,4 @@ public @interface LongColumn {
 	boolean isUniqueKey() default false;
 	String name();
 	boolean required() default false;
-	
 }
