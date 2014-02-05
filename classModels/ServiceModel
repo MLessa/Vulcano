@@ -1,0 +1,58 @@
+package service;
+
+import java.util.ArrayList;
+
+import model.<Class>;
+import dao.<Class>Dao;
+
+public class <Class>Service {
+
+	private <Class>Dao <Object>Dao;
+
+	public <Class>Service(){
+		<Object>Dao = new <Class>Dao();
+	}
+
+	public void executeInsert(<Class> <Object>){
+		try{
+			<Object>Dao.executeInsert(<Object>);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void executeUpdate(<Class> <Object>){
+		try{
+			<Object>Dao.executeUpdate(<Object>);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public ArrayList<<Class>> findAll(){
+		try{
+			return <Object>Dao.findAll();
+		}catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	public <Class> findById(Long id){
+		try{
+			return <Object>Dao.findById(id);
+		}catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	public ArrayList<<Class>> findByExample(<Class> <Object>){
+		try{
+			return <Object>Dao.findByExample(<Object>);
+		}catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+}

@@ -1,0 +1,86 @@
+package dao;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+public class <Class>Dao{
+
+	private DaoBase daoBase;
+	
+	public PessoaDao(){
+		daoBase=DaoBase.getInstance();
+	}
+
+	public void executeInsert(<Class> <Object>) throws ClassNotFoundException, SQLException{
+		String insert = "insert into <Object>(<InsertFields>) " +
+				"values('"+<InsertFildsValues>+"')";
+			//	<Object>.get<Field>()		
+		daoBase.executeInsert(insert);
+	}
+
+	public void executeUpdate(<Class> <Object>) throws ClassNotFoundException, SQLException{
+		String update = "update <Object> set <UpdateFields>";
+		
+		
+	//	nome = '"+ <Object>.getNome() 
+	//			+ ", dataNascimento = " 
+	//			+ <Object>.getDataNascimento() 
+	//			+ ", qtdFilhos =" + <Object>.getQtdFilhos() 
+	//			+ " where id =" + <Object>.getId();
+
+		daoBase.executeUpdate(update);
+	}
+
+	public void executeDelete(<Class> <Object>) throws ClassNotFoundException, SQLException{	
+		String delete = "delete from <Object> where id ="+<Object>.getId(); 
+		daoBase.executeDelete(delete);
+	}
+
+	public ArrayList<<Class>> findAll() throws ClassNotFoundException, SQLException{
+		ArrayList<<Class>> <Object> = new ArrayList<<Class>>();
+		String query = "Select * from <Object>";
+		ResultSet rs = daoBase.executeSelect(query);
+		while(rs.next()){
+			<Class> <Object> = new <Class>();
+			
+			//<Object>.setNome(rs.getString("nome"));
+			//<Object>.setDataNascimento(rs.getDate("dataNascimento"));
+			//<Object>.setQtdFilhos(rs.getInt("qtdFilhos"));
+			//<Object>List.add(<Object>);
+		}
+		return <Object>List;
+	}
+
+	public <Class> findById(Long id) throws SQLException, ClassNotFoundException{
+		String select = "Select * from <Class> where id="+id;
+		ResultSet rs = daoBase.executeSelect(select);
+
+		<Class> <Object> = new <Class>();
+		
+		//<Object>.setNome(rs.getString("nome"));
+		//<Object>.setDataNascimento(rs.getDate("dataNascimento"));
+		//<Object>.setQtdFilhos(rs.getInt("qtdFilhos"));
+
+		return <Object>;
+	}
+
+	public ArrayList<<Class>> findByExemple(<Class> exemple) throws ClassNotFoundException, SQLException{
+		ArrayList<<Class>> <Object>List = new ArrayList<<Class>>();
+		String query = "Select * from <Class> where id=id";
+		
+		//if(exemple.getNome()!=null)
+		//	query+=" and nome="+exemple.getNome();
+
+		ResultSet rs = daoBase.executeSelect(query);
+		while(rs.next()){
+			<Class> <Object> = new <Class>();
+			//<Object>.setNome(rs.getString("nome"));
+			//<Object>.setDataNascimento(rs.getDate("dataNascimento"));
+			//<Object>.setQtdFilhos(rs.getInt("qtdFilhos"));
+			//<Object>List.add(<Object>);
+		}
+		return <Object>List;
+	}
+
+}
