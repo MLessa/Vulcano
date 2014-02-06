@@ -34,7 +34,7 @@ public class <Class>Dao{
 
 	public ArrayList<<Class>> findAll() throws ClassNotFoundException, SQLException{
 		ArrayList<<Class>> <Object>List = new ArrayList<<Class>>();
-		String query = "Select * from <Object>";
+		String query = "Select * from <Table>";
 		ResultSet rs = daoBase.executeSelect(query);
 		while(rs.next()){
 			<Class> <Object> = new <Class>();
@@ -45,7 +45,7 @@ public class <Class>Dao{
 	}
 
 	public <Class> findById(Long id) throws SQLException, ClassNotFoundException{
-		String select = "Select * from <Class> where id="+id;
+		String select = "Select * from <Table> where id="+id;
 		ResultSet rs = daoBase.executeSelect(select);
 
 		<Class> <Object> = new <Class>();
@@ -54,9 +54,9 @@ public class <Class>Dao{
 		return <Object>;
 	}
 
-	public ArrayList<<Class>> findByExemple(<Class> exemple) throws ClassNotFoundException, SQLException{
+	public ArrayList<<Class>> findByExample(<Class> example) throws ClassNotFoundException, SQLException{
 		ArrayList<<Class>> <Object>List = new ArrayList<<Class>>();
-		String query = "Select * from <Class> where id=id";
+		String query = "Select * from <Table> where id=id";
 		
 		<condicional>
 		ResultSet rs = daoBase.executeSelect(query);

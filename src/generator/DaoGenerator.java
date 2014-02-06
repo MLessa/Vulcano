@@ -71,7 +71,7 @@ public class DaoGenerator {
                 	valuesInsert += "+"+b+".get"+a+"()+"+'"'+","+'"';
                     valuesSelect += b+".set"+a+"(rs.getString("+ '"'+ varV.name() + '"'+")); ";
                     valuesUpdate += varV.name() + "="+'"'+"+"+b+".get"+a+"()"+"+"+'"'+",";
-                    condicional += "if(exemple.get"+a+"()"+"!= null) query+=" + '"' + "and " + varV.name() + "="+'"'+"+"+ "exemple.get" + a + "();" ;
+                    condicional += "if(example.get"+a+"()"+"!= null) query+=" + '"' + "and " + varV.name() + "="+'"'+"+"+ "example.get" + a + "();" ;
                 }else{
                 	a = varV.name().valueOf(varV.name().toCharArray()[0]).toUpperCase() + varV.name().substring(1);   
                     where = varV.name() + "="+'"'+"+"+b+".get"+a+"()";
@@ -84,7 +84,7 @@ public class DaoGenerator {
                 	valuesInsert += "+"+b+".get"+a+"()+"+'"'+","+'"';
                     valuesSelect += b+".set"+a+"(rs.getString("+ '"'+ varL.name() + '"'+")); ";
                     valuesUpdate += varL.name() + "="+'"'+"+"+b+".get"+a+"()"+"+"+'"'+",";
-                    condicional += "if(exemple.get"+a+"()"+"!= null) query+=" + '"' + "and " + varL.name() + "="+'"'+"+"+ "exemple.get" + a + "();" ;   
+                    condicional += "if(example.get"+a+"()"+"!= null) query+=" + '"' + "and " + varL.name() + "="+'"'+"+"+ "example.get" + a + "();" ;   
                 }
                 else{
                 	a = varL.name().valueOf(varL.name().toCharArray()[0]).toUpperCase() + varL.name().substring(1);   
@@ -98,7 +98,7 @@ public class DaoGenerator {
                 	valuesInsert += "+"+b+".get"+a+"()+"+'"'+","+'"';
                     valuesSelect += b+".set"+a+"(rs.getDate("+ '"'+ varD.name() + '"'+")); ";
                     valuesUpdate += varD.name() + "="+'"'+"+"+b+".get"+a+"()"+"+"+'"'+",";
-                    condicional += "if(exemple.get"+a+"()"+"!= null) query+=" + '"' + "and " + varD.name() + "="+'"'+"+"+ "exemple.get" + a + "();" ;
+                    condicional += "if(example.get"+a+"()"+"!= null) query+=" + '"' + "and " + varD.name() + "="+'"'+"+"+ "example.get" + a + "();" ;
                 }
                 else{
                 	a = varD.name().valueOf(varD.name().toCharArray()[0]).toUpperCase() + varD.name().substring(1);   
@@ -112,7 +112,7 @@ public class DaoGenerator {
                 	valuesInsert += "+"+b+".get"+a+"()+"+'"'+","+'"';
                     valuesSelect += b+".set"+a+"(rs.getInt("+ '"'+ varB.name() +'"'+")); ";
                     valuesUpdate += varB.name() + "="+'"'+"+"+b+".get"+a+"()"+"+"+'"'+",";
-                    condicional += "if(exemple.get"+a+"()"+"!= null) query+=" + '"' + "and " + varB.name() + "="+'"'+"+"+ "exemple.get" + a + "();" ;
+                    condicional += "if(example.get"+a+"()"+"!= null) query+=" + '"' + "and " + varB.name() + "="+'"'+"+"+ "example.get" + a + "();" ;
                 }
                 else{
                 	a = varB.name().valueOf(varB.name().toCharArray()[0]).toUpperCase() + varB.name().substring(1);   
@@ -126,7 +126,7 @@ public class DaoGenerator {
                 	valuesInsert += "+"+b+".get"+a+"()+"+'"'+","+'"';
                     valuesSelect += b+".set"+a+"(rs.getInt("+ '"'+ varI.name() +'"'+")); ";
                     valuesUpdate += varI.name() + "="+'"'+"+"+b+".get"+a+"()"+"+"+'"'+",";
-                    condicional += "if(exemple.get"+a+"()"+"!= null) query+=" + '"' + "and " + varI.name() + "="+'"'+"+"+ "exemple.get" + a + "();" ;
+                    condicional += "if(example.get"+a+"()"+"!= null) query+=" + '"' + "and " + varI.name() + "="+'"'+"+"+ "example.get" + a + "();" ;
                 }
                 else{
                 	a = varI.name().valueOf(varI.name().toCharArray()[0]).toUpperCase() + varI.name().substring(1);   
