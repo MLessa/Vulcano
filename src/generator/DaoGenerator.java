@@ -39,15 +39,15 @@ public class DaoGenerator {
         
         String a = "";
         String b = T.getName().split("model.")[1].toLowerCase();
-        //try {
-            //FileInputStream inputStream = new FileInputStream(new File("classModels/DaoModel"));
-            //String fileString = IOUtils.toString(inputStream);
-            //fileString=fileString.replaceAll("<Class>", T.getName().split("model.")[1]);
-            //fileString=fileString.replaceAll("<Object>", T.getName().split("model.")[1].toLowerCase());
+        try {
+            FileInputStream inputStream = new FileInputStream(new File("classModels/DaoModel"));
+            String fileString = IOUtils.toString(inputStream);
+            fileString=fileString.replaceAll("<Class>", T.getName().split("model.")[1]);
+            fileString=fileString.replaceAll("<Object>", T.getName().split("model.")[1].toLowerCase());
          
             //delete
              String tableName = AnnotationGetter.getTableAnnotation(T).name();
-             //fileString=fileString.replaceAll("<Table>", tableName);
+             fileString=fileString.replaceAll("<Table>", tableName);
 
              //insert
             varcharList = AnnotationGetter.getVarcharColumnAnnotations(T);
@@ -55,12 +55,7 @@ public class DaoGenerator {
             intList = AnnotationGetter.getIntColumnAnnotations(T);
             dateList = AnnotationGetter.getDateColumnAnnotations(T);
             boolList = AnnotationGetter.getBoolColumnAnnotations(T);
-            
         
-            //<Object>.setDataNascimento(rs.getDate("dataNascimento"));
-            //<Object>.setQtdFilhos(rs.getInt("qtdFilhos"));
-            //<Object>List.add(<Object>);
-            
             insert = "";
             update = "";
             valuesInsert = "";
@@ -72,8 +67,11 @@ public class DaoGenerator {
                 	insert += varV.name()+",";
                 	a = varV.name().valueOf(varV.name().toCharArray()[0]).toUpperCase() + varV.name().substring(1);
                     valuesInsert += b+".get"+a+"(),";
-                    valuesSelect += b+".set"+a+"(rs.getString("+ varV.name() +"); ";
+                    valuesSelect += b+".set"+a+"(rs.getString("+ '"'+ varV.name() + '"'+"); ";
                     valuesUpdate += varV.name() + "="+b+".get"+a+"(),";
+                }else{
+                	a = varV.name().valueOf(varV.name().toCharArray()[0]).toUpperCase() + varV.name().substring(1);   
+                    where = varV.name() + "="+b+".get"+a+"()";
                 }
             }
             for (LongColumn varL : longList) {
@@ -81,7 +79,7 @@ public class DaoGenerator {
                     insert += varL.name()+",";
                     a = varL.name().valueOf(varL.name().toCharArray()[0]).toUpperCase() + varL.name().substring(1);
                     valuesInsert += b+".get"+a+"(),";
-                    valuesSelect += b+".set"+a+"(rs.getString("+ varL.name() +"); ";
+                    valuesSelect += b+".set"+a+"(rs.getString("+ '"'+ varL.name() + '"'+"); ";
                     valuesUpdate += varL.name() + "="+b+".get"+a+"(),";
                 }
                 else{
@@ -94,8 +92,12 @@ public class DaoGenerator {
                     insert += varD.name()+",";
                     a = varD.name().valueOf(varD.name().toCharArray()[0]).toUpperCase() + varD.name().substring(1);
                     valuesInsert += b+".get"+a+"(),";
-                    valuesSelect += b+".set"+a+"(rs.getDate("+ varD.name() +"); ";
+                    valuesSelect += b+".set"+a+"(rs.getDate("+ '"'+ varD.name() + '"'+"); ";
                     valuesUpdate += varD.name() + "="+b+".get"+a+"(),";
+                }
+                else{
+                	a = varD.name().valueOf(varD.name().toCharArray()[0]).toUpperCase() + varD.name().substring(1);   
+                    where = varD.name() + "="+b+".get"+a+"()";
                 }
             }
             for (BoolColumn varB : boolList) {
@@ -103,8 +105,12 @@ public class DaoGenerator {
                     insert += varB.name()+",";
                     a = varB.name().valueOf(varB.name().toCharArray()[0]).toUpperCase() + varB.name().substring(1);
                     valuesInsert += b+".get"+a+"(),";
-                    valuesSelect += b+".set"+a+"(rs.getInt("+ varB.name() +"); ";
+                    valuesSelect += b+".set"+a+"(rs.getInt("+ '"'+ varB.name() +'"'+"); ";
                     valuesUpdate += varB.name() + "="+b+".get"+a+"(),";
+                }
+                else{
+                	a = varB.name().valueOf(varB.name().toCharArray()[0]).toUpperCase() + varB.name().substring(1);   
+                    where = varB.name() + "="+b+".get"+a+"()";
                 }
             }
             for (IntColumn varI :intList) {
@@ -112,35 +118,39 @@ public class DaoGenerator {
                 insert += varI.name()+",";
                     a = varI.name().valueOf(varI.name().toCharArray()[0]).toUpperCase() + varI.name().substring(1);
                     valuesInsert += b+".get"+a+"(),";
-                    valuesSelect += b+".set"+a+"(rs.getInt("+ varI.name() +"); ";
+                    valuesSelect += b+".set"+a+"(rs.getInt("+ '"'+ varI.name() +'"'+"); ";
                     valuesUpdate += varI.name() + "="+b+".get"+a+"(),";
+                }
+                else{
+                	a = varI.name().valueOf(varI.name().toCharArray()[0]).toUpperCase() + varI.name().substring(1);   
+                    where = varI.name() + "="+b+".get"+a+"()";
                 }
             }
             valuesInsert=valuesInsert.substring(0, valuesInsert.length()-1);
             insert=insert.substring(0, insert.length()-1);
             valuesUpdate = valuesUpdate.substring(0, valuesUpdate.length()-1);
             valuesUpdate += " where "+where;
-            //fileString=fileString.replaceAll("<InsertFildsValues>", T.getName().split("model.")[1].toLowerCase());
-            //fileString=fileString.replaceAll("<InsertFields>", T.getName().split("model.")[1].toLowerCase());
-            //fileString=fileString.replaceAll("<UpdateFields>", valuesUpdate);
-            //fileString=fileString.replaceAll("<SelectFildsValues>", valuesSelect);
+            fileString=fileString.replaceAll("<InsertFildsValues>", T.getName().split("model.")[1].toLowerCase());
+            fileString=fileString.replaceAll("<InsertFields>", T.getName().split("model.")[1].toLowerCase());
+            fileString=fileString.replaceAll("<UpdateFields>", valuesUpdate);
+            fileString=fileString.replaceAll("<SelectFildsValues>", valuesSelect);
 
-            //file = new File("src/dao/"+T.getName().split("model.")[1]+"dao.java");
-            //FileOutputStream fop = new FileOutputStream(file);
-            //file.createNewFile();
-            //byte[] contentInBytes = fileString.getBytes();
-            //fop.write(contentInBytes);
-            //fop.flush();
-            //fop.close();
+            file = new File("src/dao/"+T.getName().split("model.")[1]+"Dao.java");
+            FileOutputStream fop = new FileOutputStream(file);
+            file.createNewFile();
+            byte[] contentInBytes = fileString.getBytes();
+            fop.write(contentInBytes);
+            fop.flush();
+            fop.close();
  
-            //inputStream.close();
-        //} catch (FileNotFoundException e) {
+            inputStream.close();
+        } catch (FileNotFoundException e) {
             // TODO Auto-generated catch block
             //e.printStackTrace();
-        //} catch (IOException e) {
+        } catch (IOException e) {
             // TODO Auto-generated catch block
             //e.printStackTrace();
-        //}
+        }
 
 
     }

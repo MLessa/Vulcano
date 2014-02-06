@@ -4,6 +4,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import model.DaoBase;
+import model.<Class>;
+
 public class <Class>Dao{
 
 	private DaoBase daoBase;
