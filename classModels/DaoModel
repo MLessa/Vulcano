@@ -13,15 +13,14 @@ public class <Class>Dao{
 	}
 
 	public void executeInsert(<Class> <Object>) throws ClassNotFoundException, SQLException{
-		String insert = "insert into <Object>(<InsertFields>) " +
+		String insert = "insert into <Table>(<InsertFields>) " +
 				"values('"+<InsertFildsValues>+"')";
 			//	<Object>.get<Field>()		
 		daoBase.executeInsert(insert);
 	}
 
 	public void executeUpdate(<Class> <Object>) throws ClassNotFoundException, SQLException{
-		String update = "update <Object> set <UpdateFields>";
-		
+		String update = "update <Table> set <UpdateFields>";
 		
 	//	nome = '"+ <Object>.getNome() 
 	//			+ ", dataNascimento = " 
@@ -33,7 +32,7 @@ public class <Class>Dao{
 	}
 
 	public void executeDelete(<Class> <Object>) throws ClassNotFoundException, SQLException{	
-		String delete = "delete from <Object> where id ="+<Object>.getId(); 
+		String delete = "delete from <Table> where id ="+<Object>.getId(); 
 		daoBase.executeDelete(delete);
 	}
 
@@ -43,11 +42,11 @@ public class <Class>Dao{
 		ResultSet rs = daoBase.executeSelect(query);
 		while(rs.next()){
 			<Class> <Object> = new <Class>();
-			
+			<SelectFildsValues>
 			//<Object>.setNome(rs.getString("nome"));
 			//<Object>.setDataNascimento(rs.getDate("dataNascimento"));
 			//<Object>.setQtdFilhos(rs.getInt("qtdFilhos"));
-			//<Object>List.add(<Object>);
+			<Object>List.add(<Object>);
 		}
 		return <Object>List;
 	}
@@ -57,7 +56,7 @@ public class <Class>Dao{
 		ResultSet rs = daoBase.executeSelect(select);
 
 		<Class> <Object> = new <Class>();
-		
+		<SelectFildsValues>
 		//<Object>.setNome(rs.getString("nome"));
 		//<Object>.setDataNascimento(rs.getDate("dataNascimento"));
 		//<Object>.setQtdFilhos(rs.getInt("qtdFilhos"));
@@ -75,10 +74,11 @@ public class <Class>Dao{
 		ResultSet rs = daoBase.executeSelect(query);
 		while(rs.next()){
 			<Class> <Object> = new <Class>();
+			<SelectFildsValues>
 			//<Object>.setNome(rs.getString("nome"));
 			//<Object>.setDataNascimento(rs.getDate("dataNascimento"));
 			//<Object>.setQtdFilhos(rs.getInt("qtdFilhos"));
-			//<Object>List.add(<Object>);
+			<Object>List.add(<Object>);
 		}
 		return <Object>List;
 	}

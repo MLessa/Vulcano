@@ -120,10 +120,10 @@ public class DaoGenerator {
             insert=insert.substring(0, insert.length()-1);
             valuesUpdate = valuesUpdate.substring(0, valuesUpdate.length()-1);
             valuesUpdate += " where "+where;
-            System.out.println(valuesUpdate);
             //fileString=fileString.replaceAll("<InsertFildsValues>", T.getName().split("model.")[1].toLowerCase());
             //fileString=fileString.replaceAll("<InsertFields>", T.getName().split("model.")[1].toLowerCase());
-
+            //fileString=fileString.replaceAll("<UpdateFields>", valuesUpdate);
+            //fileString=fileString.replaceAll("<SelectFildsValues>", valuesSelect);
 
             //file = new File("src/dao/"+T.getName().split("model.")[1]+"dao.java");
             //FileOutputStream fop = new FileOutputStream(file);
