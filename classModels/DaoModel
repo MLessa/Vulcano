@@ -16,21 +16,14 @@ public class <Class>Dao{
 	}
 
 	public void executeInsert(<Class> <Object>) throws ClassNotFoundException, SQLException{
-		String insert = "insert into <Table>(<InsertFields>) " +
-				"values('"+<InsertFildsValues>+"')";
-			//	<Object>.get<Field>()		
+		String insert = "insert into <Table>(<InsertFields>) values (" 
+				<InsertFildsValues>")";	
 		daoBase.executeInsert(insert);
 	}
 
 	public void executeUpdate(<Class> <Object>) throws ClassNotFoundException, SQLException{
-		String update = "update <Table> set <UpdateFields>";
-		
-	//	nome = '"+ <Object>.getNome() 
-	//			+ ", dataNascimento = " 
-	//			+ <Object>.getDataNascimento() 
-	//			+ ", qtdFilhos =" + <Object>.getQtdFilhos() 
-	//			+ " where id =" + <Object>.getId();
-
+		String update = "update <Table> set <UpdateFields>;
+	
 		daoBase.executeUpdate(update);
 	}
 
@@ -40,15 +33,12 @@ public class <Class>Dao{
 	}
 
 	public ArrayList<<Class>> findAll() throws ClassNotFoundException, SQLException{
-		ArrayList<<Class>> <Object> = new ArrayList<<Class>>();
+		ArrayList<<Class>> <Object>List = new ArrayList<<Class>>();
 		String query = "Select * from <Object>";
 		ResultSet rs = daoBase.executeSelect(query);
 		while(rs.next()){
 			<Class> <Object> = new <Class>();
 			<SelectFildsValues>
-			//<Object>.setNome(rs.getString("nome"));
-			//<Object>.setDataNascimento(rs.getDate("dataNascimento"));
-			//<Object>.setQtdFilhos(rs.getInt("qtdFilhos"));
 			<Object>List.add(<Object>);
 		}
 		return <Object>List;
@@ -60,10 +50,7 @@ public class <Class>Dao{
 
 		<Class> <Object> = new <Class>();
 		<SelectFildsValues>
-		//<Object>.setNome(rs.getString("nome"));
-		//<Object>.setDataNascimento(rs.getDate("dataNascimento"));
-		//<Object>.setQtdFilhos(rs.getInt("qtdFilhos"));
-
+	
 		return <Object>;
 	}
 
@@ -71,16 +58,11 @@ public class <Class>Dao{
 		ArrayList<<Class>> <Object>List = new ArrayList<<Class>>();
 		String query = "Select * from <Class> where id=id";
 		
-		//if(exemple.getNome()!=null)
-		//	query+=" and nome="+exemple.getNome();
-
+		<condicional>
 		ResultSet rs = daoBase.executeSelect(query);
 		while(rs.next()){
 			<Class> <Object> = new <Class>();
 			<SelectFildsValues>
-			//<Object>.setNome(rs.getString("nome"));
-			//<Object>.setDataNascimento(rs.getDate("dataNascimento"));
-			//<Object>.setQtdFilhos(rs.getInt("qtdFilhos"));
 			<Object>List.add(<Object>);
 		}
 		return <Object>List;
